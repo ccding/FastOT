@@ -29,8 +29,8 @@ void sender_genS(SENDER * s, unsigned char * S_pack)
 	ge_to_4x(&s->yS, &yS);
 }
 
-void sender_keygen(SENDER * s, 
-                   unsigned char * Rs_pack, 
+void sender_keygen(SENDER * s,
+                   unsigned char * Rs_pack,
                    unsigned char (*keys)[4][HASHBYTES])
 {
 	int i;
@@ -42,7 +42,7 @@ void sender_keygen(SENDER * s,
 	//
 
 	if (ge4x_unpack_vartime(&Rs, Rs_pack) != 0)
-	{ 
+	{
 		fprintf(stderr, "Error: point decompression failed\n"); exit(-1);
 	}
 

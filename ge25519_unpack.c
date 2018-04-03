@@ -13,7 +13,7 @@ int ge25519_unpack_vartime(ge25519_p3 *r, const unsigned char p[32])
   unsigned char par = p[31] >> 7;
 
   fe25519_setint(&r->z,1);
-  fe25519_unpack(&r->y, p); 
+  fe25519_unpack(&r->y, p);
   fe25519_square(&num, &r->y); /* x = y^2 */
   fe25519_mul(&den, &num, &ecd); /* den = dy^2 */
   fe25519_sub(&num, &num, &r->z); /* x = y^2-1 */

@@ -30,7 +30,7 @@ void ge4x_neg(ge4x * a, const ge4x * b)
 
 #define repeat4x(x) {x, x, x, x}
 
-const gfe4x Gk = 
+const gfe4x Gk =
 {{
 	{ repeat4x(3338585.0) } ,
 	{ repeat4x(3934835965952.0) } ,
@@ -43,7 +43,7 @@ const gfe4x Gk =
 	{ repeat4x(626647004757192365988092839070681114614100044180388577280.0) } ,
 	{ repeat4x(13159058716893486699394031679446200360393917757201178927420145664.0) } ,
 	{ repeat4x(12842070454865951878207543570322902610654944894655310136406629955928064.0) } ,
-	{ repeat4x(16295354408597167049195255459117446390458785936524946835293367493552880222208.0) } 
+	{ repeat4x(16295354408597167049195255459117446390458785936524946835293367493552880222208.0) }
 }};
 
 extern void ge4x_niels_add_p1p1_asm(ge4x_p1p1 *, const ge4x *, const ge4x_niels *);
@@ -156,7 +156,7 @@ void ge4x_maketable(ge4x (*table)[8], const ge4x * b, int dist)
 {
 	const int n = 64/dist;
 
-	int i; 
+	int i;
 	ge4x p = *b;
 
 	for (i = 0; i < n; i++)
@@ -191,7 +191,7 @@ static void convert(ge4x * dest, ge4x_niels * src)
 }
 
 
-static const double ge4x_base_multiples_niels[32][8][3][12] = 
+static const double ge4x_base_multiples_niels[32][8][3][12] =
 {
 #include "ge4x.data"
 };
@@ -202,7 +202,7 @@ void ge4x_scalarsmults_base(ge4x * a, const sc25519 * s)
 	int i, j, pos;
 	char idx[4], w[4][64];
 
-	ge4x_niels tmp[ dist ]; 
+	ge4x_niels tmp[ dist ];
 	ge4x t[ dist ];
 	ge4x_p1p1 t_p1p1;
 
@@ -215,7 +215,7 @@ void ge4x_scalarsmults_base(ge4x * a, const sc25519 * s)
 
 	for (i = 0; i < dist; i++)
 	{
-		for (pos = 0; pos < 4; pos++) 
+		for (pos = 0; pos < 4; pos++)
 			idx[pos] = w[pos][i];
 
 		ge4x_lookup_niels_asm(&tmp[i], ge4x_base_multiples_niels[0], idx);
@@ -228,7 +228,7 @@ void ge4x_scalarsmults_base(ge4x * a, const sc25519 * s)
 	{
 		for (i = 0; i < dist; i++)
 		{
-			for (pos = 0; pos < 4; pos++) 
+			for (pos = 0; pos < 4; pos++)
 				idx[pos] = w[pos][i+j];
 		
 			ge4x_lookup_niels_asm(&tmp[i], ge4x_base_multiples_niels[j/dist], idx);
@@ -288,7 +288,7 @@ void ge4x_scalarsmults_table(ge4x * a, ge4x (*table)[8], const sc25519 * s, int 
 
 	for (i = dist-1; i < 64; i += dist)
 	{
-		for (pos = 0; pos < 4; pos++) 
+		for (pos = 0; pos < 4; pos++)
 			idx[pos] = w[pos][i];
 
 		if (i == dist-1)
@@ -299,7 +299,7 @@ void ge4x_scalarsmults_table(ge4x * a, ge4x (*table)[8], const sc25519 * s, int 
 			ge4x_lookup_asm(&t, table[i/dist], idx);
 			ge4x_add_p1p1_asm(&t_p1p1, a, &t);
 			
-			if (i + dist < 64) 
+			if (i + dist < 64)
 				ge4x_p1p1_to_p3(a, &t_p1p1);
 			else
 				ge4x_p1p1_to_p2((ge4x_p2 *)a, &t_p1p1);
@@ -316,13 +316,13 @@ void ge4x_scalarsmults_table(ge4x * a, ge4x (*table)[8], const sc25519 * s, int 
 
 		for (j = i; j < 64; j += dist)
 		{
-			for (pos = 0; pos < 4; pos++) 
+			for (pos = 0; pos < 4; pos++)
 				idx[pos] = w[pos][j];
 	
 			ge4x_lookup_asm(&t, table[j/dist], idx);
 			ge4x_add_p1p1_asm(&t_p1p1, a, &t);
 				
-			if (j + dist < 64 || i == 0) 
+			if (j + dist < 64 || i == 0)
 				ge4x_p1p1_to_p3(a, &t_p1p1);
 			else
 				ge4x_p1p1_to_p2((ge4x_p2 *)a, &t_p1p1);

@@ -1,9 +1,9 @@
 #ifndef SC25519_H
 #define SC25519_H
 
-typedef struct 
+typedef struct
 {
-  unsigned long long v[4]; 
+  unsigned long long v[4];
 }
 sc25519;
 

@@ -24,7 +24,7 @@ void ge25519_scalarmult_base(ge25519_p3 *r, const sc25519 *s)
   fe25519_sub(&d, &r->y, &r->x);
   fe25519_add(&r->y, &r->y, &r->x);
   r->x = d;
-  r->t = r->z; 
+  r->t = r->z;
   fe25519_setint(&r->z,2);
 
   for(i = 1; i < 64; i++)

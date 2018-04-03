@@ -8,7 +8,7 @@ int server_listen(const int portno)
 	/* First call to socket() function */
 
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
-	if (sockfd < 0) 
+	if (sockfd < 0)
 	{
 	    perror("ERROR opening socket"); exit(-1);
 	}
@@ -19,7 +19,7 @@ int server_listen(const int portno)
 	serv_addr.sin_family = AF_INET;
 	serv_addr.sin_addr.s_addr = INADDR_ANY;
 	serv_addr.sin_port = htons(portno);
- 
+
 	/* Now bind the host address using bind() call.*/
 
 	if (bind(sockfd, (struct sockaddr *) &serv_addr,
@@ -44,10 +44,10 @@ int server_accept(int sockfd)
 
 	clilen = sizeof(cli_addr);
 
-	newsockfd = accept(sockfd, 
-	                   (struct sockaddr *)&cli_addr, 
+	newsockfd = accept(sockfd,
+	                   (struct sockaddr *)&cli_addr,
 	                   &clilen);
-	if (newsockfd < 0) 
+	if (newsockfd < 0)
 	{
 	    perror("ERROR on accept"); exit(-1);
 	}
@@ -65,7 +65,7 @@ void client_connect(int * sock, const char * host, const int portno)
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
-    if (sockfd < 0) 
+    if (sockfd < 0)
     {
         perror("ERROR opening socket"); exit(-1);
     }
@@ -74,7 +74,7 @@ void client_connect(int * sock, const char * host, const int portno)
 
     server = gethostbyname(host);
 
-    if (server == NULL) 
+    if (server == NULL)
     {
         fprintf(stderr,"ERROR, no such host\n"); exit(0);
     }
@@ -84,7 +84,7 @@ void client_connect(int * sock, const char * host, const int portno)
     serv_addr.sin_family = AF_INET;
 
     memcpy( &(serv_addr.sin_addr.s_addr),
-            server->h_addr, 
+            server->h_addr,
             server->h_length                      );
 
     serv_addr.sin_port = htons(portno);
@@ -108,7 +108,7 @@ void writing(int sockfd, void * buffer, const unsigned len)
 	{
 		n = write(sockfd, ptr, len - delivered);
 
-		if (n < 0) 
+		if (n < 0)
 		{
 			perror("ERROR writing to socket"); exit(-1);
 		}
@@ -133,7 +133,7 @@ void reading(int sockfd, void * buffer, const unsigned len)
 	{
 		n = read(sockfd, ptr, len - delivered);
 
-		if (n < 0) 
+		if (n < 0)
 		{
 			perror("ERROR reading from socket"); exit(-1);
 		}

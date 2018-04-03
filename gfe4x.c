@@ -243,7 +243,7 @@ void gfe4x_pack(unsigned char r[128], const gfe4x *x)
     t >>= 7;
     for(j=0;j<32;j++)
       r[j] = t * minusr[j] + (1-t) * r[j];
-    
+
     r += 32;
   }
 }
@@ -367,14 +367,14 @@ const limb two4x = {{2., 2., 2., 2.}};
 const limb _4x121666 = {{121666., 121666., 121666., 121666.}};
 
 const limb alpha22 = {{
-  28334198897217871282176.0, 
-  28334198897217871282176.0, 
-  28334198897217871282176.0, 
+  28334198897217871282176.0,
+  28334198897217871282176.0,
+  28334198897217871282176.0,
   28334198897217871282176.0}};
 const limb alpha43 = {{
-  59421121885698253195157962752.0, 
-  59421121885698253195157962752.0, 
-  59421121885698253195157962752.0, 
+  59421121885698253195157962752.0,
+  59421121885698253195157962752.0,
+  59421121885698253195157962752.0,
   59421121885698253195157962752.0}};
 const limb alpha64 = {{
   124615124604835863084731911901282304.0,
@@ -613,47 +613,47 @@ void gfe4x_mul(gfe4x *rr, const gfe4x *x, const gfe4x *y)
   limb_sub(&t, &t, &alpha43);
   limb_sub(r.v+1, r.v+1, &t);
   limb_add(r.v+2, r.v+2, &t);
-  
+
   limb_add(&t, r.v+2, &alpha64);
   limb_sub(&t, &t, &alpha64);
   limb_sub(r.v+2, r.v+2, &t);
   limb_add(r.v+3, r.v+3, &t);
-  
+
   limb_add(&t, r.v+3, &alpha85);
   limb_sub(&t, &t, &alpha85);
   limb_sub(r.v+3, r.v+3, &t);
   limb_add(r.v+4, r.v+4, &t);
-  
+
   limb_add(&t, r.v+4, &alpha107);
   limb_sub(&t, &t, &alpha107);
   limb_sub(r.v+4, r.v+4, &t);
   limb_add(r.v+5, r.v+5, &t);
-  
+
   limb_add(&t, r.v+5, &alpha128);
   limb_sub(&t, &t, &alpha128);
   limb_sub(r.v+5, r.v+5, &t);
   limb_add(r.v+6, r.v+6, &t);
-  
+
   limb_add(&t, r.v+6, &alpha149);
   limb_sub(&t, &t, &alpha149);
   limb_sub(r.v+6, r.v+6, &t);
   limb_add(r.v+7, r.v+7, &t);
-  
+
   limb_add(&t, r.v+7, &alpha170);
   limb_sub(&t, &t, &alpha170);
   limb_sub(r.v+7, r.v+7, &t);
   limb_add(r.v+8, r.v+8, &t);
-  
+
   limb_add(&t, r.v+8, &alpha192);
   limb_sub(&t, &t, &alpha192);
   limb_sub(r.v+8, r.v+8, &t);
   limb_add(r.v+9, r.v+9, &t);
-  
+
   limb_add(&t, r.v+9, &alpha213);
   limb_sub(&t, &t, &alpha213);
   limb_sub(r.v+9, r.v+9, &t);
   limb_add(r.v+10, r.v+10, &t);
-  
+
   limb_add(&t, r.v+10, &alpha234);
   limb_sub(&t, &t, &alpha234);
   limb_sub(r.v+10, r.v+10, &t);

@@ -1820,6 +1820,6 @@ movq 40(%rsp),%rbx
 # asm 2: movq <rbp_stack=48(%rsp),>caller_rbp=%rbp
 movq 48(%rsp),%rbp
 
-# qhasm: return 
+# qhasm: return
 add %r11,%rsp
 ret

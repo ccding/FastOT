@@ -91,7 +91,7 @@ int crypto_hash( unsigned char *out, const unsigned char *in, unsigned long long
 }
 
 
-const tKeccakLane KeccakF_RoundConstants[cKeccakNumberOfRounds] = 
+const tKeccakLane KeccakF_RoundConstants[cKeccakNumberOfRounds] =
 {
     (tKeccakLane)0x0000000000000001ULL,
     (tKeccakLane)0x0000000000008082ULL,

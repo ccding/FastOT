@@ -30,7 +30,7 @@ void fe25519_pack(unsigned char r[32], const fe25519 *x)
   r[17]  = (unsigned char) ((t.v[2] >> 34) & 0xff);
   r[18]  = (unsigned char) ((t.v[2] >> 42) & 0xff);
   r[19]  = (unsigned char) ((t.v[2] >> 50));
-  
+
   r[19] ^= (unsigned char) ((t.v[3] <<  1) & 0xfe);
   r[20]  = (unsigned char) ((t.v[3] >>  7) & 0xff);
   r[21]  = (unsigned char) ((t.v[3] >> 15) & 0xff);

@@ -3,7 +3,7 @@
 void ge4x_pack(unsigned char r[128], const ge4x *p)
 {
   gfe4x tx, ty, zi;
-  gfe4x_invert(&zi, &p->z); 
+  gfe4x_invert(&zi, &p->z);
   gfe4x_mul(&tx, &p->x, &zi);
   gfe4x_mul(&ty, &p->y, &zi);
   gfe4x_pack(r, &ty);

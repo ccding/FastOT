@@ -23,7 +23,7 @@ static void ge25519_maketable(ge25519 (*table)[8], const ge25519 * b, int dist)
 {
 	const int n = 64/dist;
 
-	int i; 
+	int i;
 	ge25519 p = *b;
 
 	//
@@ -72,7 +72,7 @@ static void ge25519_scalarmult_table(ge25519 *r, ge25519 (*table)[8], const sc25
 			ge25519_lookup_asm(&t, table[i/dist], &w[i]);
 			ge25519_add_p1p1(&t_p1p1, r, &t);
   		
-			if (i + dist < 64) 
+			if (i + dist < 64)
 				ge25519_p1p1_to_p3(r, &t_p1p1);
 			else
 				ge25519_p1p1_to_p2((ge25519_p2 *)r, &t_p1p1);
@@ -91,7 +91,7 @@ static void ge25519_scalarmult_table(ge25519 *r, ge25519 (*table)[8], const sc25
 			ge25519_lookup_asm(&t, table[j/dist], &w[j]);
 			ge25519_add_p1p1(&t_p1p1, r, &t);
 				
-			if (j + dist < 64 || i == 0) 
+			if (j + dist < 64 || i == 0)
 				ge25519_p1p1_to_p3(r, &t_p1p1);
 			else
 				ge25519_p1p1_to_p2((ge25519_p2 *)r, &t_p1p1);

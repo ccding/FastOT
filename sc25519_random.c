@@ -7,12 +7,12 @@ void sc25519_random(sc25519 *r, int c)
 
 	randombytes(x, 32);
 
-	if (c == 0) 
+	if (c == 0)
 	{
 		x[31] &= 15;
 	}
-	else    
-	{    
+	else
+	{
 		x[0] &= 248;
 		x[31] &= 127;
 	}

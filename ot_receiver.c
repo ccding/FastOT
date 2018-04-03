@@ -18,7 +18,7 @@ void receiver_procS(RECEIVER * r)
 	ge25519 S;
 
 	if (ge25519_unpack_vartime(&S, r->S_pack) != 0)
-	{ 
+	{
 		fprintf(stderr, "Error: point decompression failed\n"); exit(-1);
 	}
 
@@ -28,7 +28,7 @@ void receiver_procS(RECEIVER * r)
 	ge_to_4x(&r->S, &S);
 }
 
-void receiver_rsgen(RECEIVER * r, 
+void receiver_rsgen(RECEIVER * r,
                      unsigned char * Rs_pack,
                      unsigned char * cs)
 {
@@ -48,7 +48,7 @@ void receiver_rsgen(RECEIVER * r,
 
 }
 
-void receiver_keygen(RECEIVER * r, 
+void receiver_keygen(RECEIVER * r,
                      unsigned char (*keys)[HASHBYTES])
 {
 	int i;

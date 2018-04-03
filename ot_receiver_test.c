@@ -32,7 +32,7 @@ void ot_receiver_test(RECEIVER * receiver, int sockfd)
 		randombytes(cs, sizeof(cs));
 
 		for (j = 0; j < 4; j++)
-		{ 
+		{
 			cs[j] &= 1;
 
 			if (VERBOSE) printf("%4d-th choose bit = %d\n", i+j, cs[j]);
@@ -72,7 +72,7 @@ int main(int argc, char * argv[])
 
 	//
 
-	if (argc != 3) 
+	if (argc != 3)
 	{
 		fprintf(stderr,"usage %s hostname port\n", argv[0]); exit(-1);
 	}

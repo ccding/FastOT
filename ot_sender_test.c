@@ -49,8 +49,8 @@ void ot_sender_test(SENDER * sender, int newsockfd)
 
 int main(int argc, char * argv[])
 {
-	int sockfd; 
-	int newsockfd; 
+	int sockfd;
+	int newsockfd;
 	int rcvbuf = BUFSIZE;
 	int reuseaddr = 1;
 
@@ -60,7 +60,7 @@ int main(int argc, char * argv[])
 
 	//
 
-	if (argc != 2) 
+	if (argc != 2)
 	{
 		fprintf(stderr, "usage %s port\n", argv[0]); exit(-1);
 	}
